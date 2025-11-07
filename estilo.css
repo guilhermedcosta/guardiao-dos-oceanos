@@ -21,27 +21,67 @@ body{
     background-image: url('imagens/fundo.png'); 
     background-repeat: no-repeat;
     background-size: cover; /* cobre toda a tela */
-    height: 100vh;;
+    min-height: 92vh;
 }
 
 nav{
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 200px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: #023e6496;
 }
 
 nav a{
     font-family: var(--fonte-auxiliar);
     color: white;
+    padding: 0px 100px;
+    font-size: 18px;
 }
 
-h1{
+.negrito{
+    font-weight: bold;
+}
+
+h1#index{
+    margin-top: 100px;
     font-family: var(--fontep);
     color: white;
+    font-size: 125px;
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.sub{
+    margin-top: 30px;
+    font-family: var(--fontep);
+    color: white;
+    font-size: 70px;
+    text-align: center;
 }
 
 p{
     font-family: var(--fonte-auxiliar);
     color: white;
+    text-align: center;
+    font-size: 25px;
+}
+
+#alga1{
+    position: absolute;
+    background-image: url('imagens/algas.png');
+    background-repeat: no-repeat;
+    height: 195px;
+    width: 225px;
+    bottom: 0;
+}
+
+#alga2{
+    position: absolute;
+    background-image: url('imagens/algas.png');
+    background-repeat: no-repeat;
+    height: 195px;
+    width: 225px;
+    bottom: 0;
+    right: 0;
 }
 
