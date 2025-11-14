@@ -28,7 +28,12 @@ nav{
     text-align: center;
     padding-top: 60px;
     padding-bottom: 60px;
-    background-color: #023e6496;
+    background-color: #023e647e;
+    transition-duration: 0.5s;
+}
+
+nav:hover{
+    background-color: #023e64d0;
 }
 
 nav a{
@@ -85,3 +90,20 @@ p{
     right: 0;
 }
 
+.centro{
+    text-align: center;
+}
+
+.img1{
+    padding: 25px;
+}
+
+.sobre{
+    font-family: var(--fonte-auxiliar);
+    color: white;
+    font-size: 1.3em;
+    padding: 20px 0px;
+    text-align: justify;
+    width: 90vw;
+    margin: auto;
+}
