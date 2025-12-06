@@ -107,3 +107,40 @@ p{
     width: 90vw;
     margin: auto;
 }
+
+.devs-container {
+    display: flex;
+    justify-content: center;   /* centraliza toda a fileira */
+    align-items: center;       /* alinha no eixo vertical */
+    gap: 80px;                 /* espaço entre cada dev */
+    margin-top: 40px;
+}
+
+.dev {
+    text-align: center;        /* nome fica centralizado embaixo da imagem */
+}
+
+.dev img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;        /* deixa redonda */
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.devp{
+    color: white;
+}
+
+.fundoalt{
+    background-color: #022942;
+    background-image: none;
+}
+
+#ondas{
+    display: block;
+    width: 99vw;
+    height: 400px;
+    margin: auto;
+}
