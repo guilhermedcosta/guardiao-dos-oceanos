@@ -47,7 +47,7 @@ nav a{
     font-weight: bold;
 }
 
-h1#index{
+h1.index{
     margin-top: 100px;
     font-family: var(--fontep);
     color: white;
@@ -96,6 +96,8 @@ p{
 
 .img1{
     padding: 25px;
+    height: 421px;
+    width: 553px;
 }
 
 .sobre{
@@ -143,4 +145,37 @@ p{
     width: 99vw;
     height: 400px;
     margin: auto;
+}
+
+.subtitulo{
+    margin: 30px;
+    font-family: var(--fontep);
+    color: white;
+    font-size: 60px;
+    text-align: left;
+}
+
+article{
+    background-color: #023e64;
+    padding: 15px;
+    flex: 1;
+    border-radius: 20px;
+}
+
+.conteiner{
+    display: flex;
+    margin: 0 20px;
+    gap: 30px;
+    align-items: center;
+}
+
+#bdiferente{
+    background-image: url('imagens/Clima.png'); 
+    background-repeat: no-repeat;
+    background-size: cover; /* cobre toda a tela */
+    min-height: 92vh;
+}
+
+.secoesp{
+    
 }

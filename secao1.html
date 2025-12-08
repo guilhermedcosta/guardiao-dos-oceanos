@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clima</title>
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="shortcut icon" href="imagens/baleiaazul.png" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body id="bdiferente">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="secoes.html">Aprenda</a>
+        <a href="#">Quiz</a>
+        <a href="sobre.html">Sobre</a>
+    </nav>
+
+    <h1 class="subtitulo"><span style="color: #6ce5e8;">01.</span> CLIMA</h1>
+    <h1 class="index">Acidificação dos oceanos</h1>
+      <div class="conteiner">
+        <article>
+          <h1 class="subtitulo"><span style="color: #6ce5e8;">01.</span> Como ocorre?</h1>
+          <p>A acidificação dos oceanos ocorre quando, por meio de um conjunto de reações químicas, a água do mar absorve CO2. Como indica o próprio Programa das Nações Unidas para o Desenvolvimento (PNUD) em um artigo, isso tem sua parte positiva. Caso não acontecesse, a presença de CO2 na atmosfera seria de cerca de 30 % superior, o que provocaria mais mudanças climáticas. Deste modo, a resolução desse problema está unida de forma indissolúvel à redução de emissões e somente pode ser abordada de maneira global, o que dificulta a procura de soluções e a tomada de decisões. </p>
+        </article>
+        <article>
+          <h1 class="subtitulo"><span style="color: #6ce5e8;">02.</span> Consequências</h1>
+          <p>A diminuição dos íons de carbonato na água afeta a formação de esqueletos e conchas de animais marinhos, como caranguejos, lagostas e ostras, prejudicando seu desenvolvimento e reprodução. Isso também ameaça espécies menos conhecidas, como pterópodes, que são importantes na cadeia alimentar. A acidificação do oceano compromete os corais, que abrigam muitas espécies marinhas. A redução dessas populações pode afetar a pesca, uma importante fonte de proteína para milhões de pessoas e um meio de vida para 47,5 milhões de pescadores e outros 120 milhões de trabalhadores no setor.</p>
+          
+        </article>
+        <div id="grafico-container" style="width: 450px; height: 450px;">
+    <canvas id="donutChart"></canvas>
+</div>
+        </div>
+        <h1 class="index">Impactos na vida marinha</h1>
+        <div id="container1">
+            <div>
+                <p class="secoesp">
+                  A acidificação dos oceanos, causada principalmente pelo aumento do dióxido de carbono (CO₂) na atmosfera, tem impactos diretos na vida marinha e, consequentemente, na oferta de alimentos do mar. Esse fenômeno compromete especialmente organismos que dependem do carbonato de cálcio para formar conchas e estruturas, como moluscos e crustáceos. Com a acidez da água, essas espécies enfrentam dificuldades de crescimento e maior mortalidade, o que afeta toda a cadeia alimentar
+                 marinha. Além disso, peixes também podem sofrer
+                alterações em seu comportamento e reprodução,
+                agravando a redução das populações marinhas.
+                Como  resultado,  atividades  como  a  pesca  e  a
+                aquicultura são prejudicadas, colocando em risco a
+                segurança alimentar e a economia de comunidades que
+                dependem dos recursos do mar. Portanto, a acidificação dos oceanos representa uma ameaça significativa à biodiversidade marinha e à sustentabilidade da alimentação humana.
+                </p>
+                        </div>
+                        <div><img src="" alt="Animal Marinho"></div>
+            </div>
+     
+  <script>
+    (function() {
+        const canvas = document.getElementById("donutChart");
+        if (!canvas) return;
+
+        const ctx = canvas.getContext("2d");
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    "1950 (14.4%)", 
+                    "1960 (14.4%)",
+                    "1970 (14.4%)",
+                    "1980 (14.3%)",
+                    "1990 (14.2%)",
+                    "2000 (14.2%)",
+                    "2010 (14.1%)"
+                ],
+                datasets: [{
+                    data: [14.4, 14.4, 14.4, 14.3, 14.2, 14.2, 14.1],
+                    backgroundColor: [
+                        "#8CE6F2",
+                        "#6DBDDD",
+                        "#5076A4",
+                        "#71A7DA",
+                        "#6DC2BF",
+                        "#3C7980",
+                        "#37757F"
+                    ],
+                    borderColor: "#ffffff",
+                    borderWidth: 2,
+                    hoverOffset: 10,
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                cutout: "55%",
+                plugins: {
+                    legend: { display: false },
+                }
+            }
+        });
+    })();
+</script>
+</body>
+</html>
