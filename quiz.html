@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quiz Guardião dos Oceanos</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #00152b; 
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        color: white; /
+    }
+
+    .quiz-container {
+        width: 100%;
+        max-width: 600px;
+        background: #002244; 
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        color: white;
+    }
+
+    h2 { font-size: 20px; color: white; }
+
+    .option {
+        background: #003366;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+        color: white;
+        border: 2px solid transparent;
+    }
+
+    .option:hover {
+        background: #004080;
+    }
+
+    .correct { background: #009900 !important; }
+    .wrong { background: #cc0000 !important; }
+
+    #result {
+        font-size: 22px;
+        margin-top: 20px;
+        color: white;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 8px;
+        background: #003366;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .progress-fill {
+        height: 100%;
+        width: 0%;
+        background: #4a90ff;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        background: #0055aa;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    .btn:disabled {
+        background: #999;
+        cursor: not-allowed;
+    }
+
+    .btn:hover:not(:disabled) {
+        background: #0077ff;
+    }
+
+    /* Confetes */
+    .confetti {
+        position: fixed;
+        top: -10px;
+        width: 10px;
+        height: 10px;
+        background: #1e90ff;
+        position: absolute;
+        animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+        to { transform: translateY(120vh) rotate(360deg); }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+    <div class="progress-bar"><div class="progress-fill"></div></div>
+    <h2 id="question"></h2>
+    <div id="options"></div>
+    <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>Confirmar</button>
+    <div id="result" class="result"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+
+const questions = [
+    {
+        q: "1. (Fuvest 2019) O processo de acidificação dos oceanos, decorrente das mudanças climáticas globais, afeta diretamente as colônias de corais, influenciando a formação de recifes. Assinale a alternativa que completa corretamente a explicação para esse fenômeno. O dióxido de carbono dissolvido no oceano...",
+        options: [
+            "a) gera menor quantidade de íons de hidrogênio, diminuindo o pH e aumentando recifes.",
+            "b) é absorvido pelo fitoplâncton e mata os recifes.",
+            "c) leva à formação de ácido carbônico, gerando H+ e carbonato, impedindo a formação de CaCO3.",
+            "d) aumenta oxigenação e atividade dos corais.",
+            "e) corrói recifes por ácido carbônico."
+        ],
+        correct: 2
+    },
+    {
+        q: "2. (Udesc 2019) Normalmente pensamos na existência dos recifes de corais em águas quentes, rasas e limpas, com muita luz e poucos nutrientes. No entanto, na foz do rio Amazonas, é o contrário: os sedimentos carregados pelo rio deixam a água turva, mas trazem muitos nutrientes, compensando a escassez de luz.",
+        options: [
+            "a) Neles surgem as primeiras células nervosas do reino animal.",
+            "b) Existem em ambientes marinhos e terrestres.",
+            "c) Possuem simetria bilateral.",
+            "d) Reproduzem-se só por brotamento.",
+            "e) Possuem tubo digestório completo."
+        ],
+        correct: 0
+    },
+    {
+        q: "3. (CFTMG 2016) A maioria dos recifes de coral em climas temperados consegue suportar temperaturas de até 29 °C antes de branquearem — processo em que corais expelem as algas simbióticas que vivem em seus tecidos, tornando-se vulneráveis a doenças e morte. Corais nos recifes do Golfo Pérsico, no entanto, tipicamente toleram temperaturas de até 36 °C durante o verão, já que possuem mecanismos genéticos que os ajudam a sobreviver a essas temperaturas extremas. Um alerta de um evento global de branqueamento devido ao aquecimento das águas fez com que cientistas discutissem a reprodução cruzada de corais do Golfo com aqueles de climas temperados, uma vez que esse método poderia… ",
+        options: [
+            "a) reverter o aquecimento das águas.",
+            "b) produzir descendentes termorresistentes.",
+            "c) substituir todos os corais temperados.",
+            "d) transferir características entre um coral e outro."
+        ],
+        correct: 1
+    },
+    {
+        q: "4. (ENEM) Alunos de um curso de ciências biológicas, em uma aula de campo, avaliaram as características dos ecossistemas aquáticos. Dentre as anotações realizadas pelo grupo de alunos estavam as seguintes afirmações sobre um lago:",
+        options: [
+            "a) autodepuração",
+            "b) potabilização",
+            "c) eutrofização",
+            "d) oxigenação",
+            "e) salinização"
+        ],
+        correct: 2
+    },
+    {
+        q: "5. (ENEM) O descarte inadequado do lixo é um problema que necessita ser solucionado urgentemente. Segundo o Ministério do Meio Ambiente, apenas 25% dos municípios brasileiros dispõem adequadamente seus resíduos. Para regulamentar essa questão, o Projeto de Lei nº 4.162/2019, que institui o marco regulatório do saneamento básico, estabeleceu um prazo até agosto de 2024 para que todos os lixões existentes no Brasil sejam transformados em aterros sanitários, entre outras providências. A medida apontada no texto é necessária porque…",
+        options: [
+            "a) a poluição dos aterros é reduzida com impermeabilização e tratamento do chorume.",
+            "b) aterros permitem reaproveitamento total da matéria orgânica.",
+            "c) lixões são mais caros que aterros.",
+            "d) lixões não permitem separação para reciclagem.",
+            "e) áreas de lixões desativados podem ser usadas imediatamente."
+        ],
+        correct: 0
+    },
+    {
+        q: "6. (UECE 2021)  eutrofização é um fenômeno ambiental que pode ocorrer em corpos d'água, resultante do acúmulo excessivo de nutrientes, como os de origem agrícola. Esse processo pode levar a problemas graves para os ecossistemas aquáticos, ameaçando a biodiversidade e a qualidade da água. Sobre a eutrofização, assinale a alternativa correta.",
+        options: [
+            "a) ocorre naturalmente em todos os corpos d'água.",
+            "b) é causada só por poluição industrial.",
+            "c) pode diminuir biodiversidade pelo excesso de algas.",
+            "d) não afeta a qualidade da água.",
+            "e) é benéfica ao aumentar oxigênio."
+        ],
+        correct: 2
+    },
+    {
+        q: "7. (FUVEST 2018) A combinação entre baixa biodiversidade, altas concentrações de poluentes e baixas concentrações de oxigênio dissolvido, que é verificada nos rios que passam por grandes centros urbanos no Brasil, deve-se principalmente à:",
+        options: [
+            "a) descarte de plásticos.",
+            "b) intervenções de engenharia.",
+            "c) aquecimento urbano.",
+            "d) descarte de esgoto sem tratamento.",
+            "e) longos períodos de estiagem."
+        ],
+        correct: 3
+    },
+    {
+        q: "8. (UERJ 2019) Apicultores brasileiros encontram meio bilhão de abelhas mortas em três meses. Nos últimos três meses, mais de 500 milhões de abelhas foram encontradas mortas por apicultores apenas em quatro estados brasileiros, segundo levantamento da Agência Pública e do Repórter Brasil. (Adaptado de sul21.com.br, março/2019.) Alguns ecossistemas são gravemente afetados por desequilíbrios como o relatado na reportagem. Nesse caso, uma consequência para as plantas polinizadas por abelhas é:",
+        options: [
+            "a) menor necessidade de água.",
+            "b) redução da dispersão de sementes.",
+            "c) perda de variabilidade genética.",
+            "d) limitação da taxa de fotossíntese.",
+            "e) aumento da fotossíntese."
+        ],
+        correct: 2
+    },
+    {
+        q: "9. (UNESP 2019) A construção de grandes barragens em rios pode causar alterações ecológicas, como mudanças na salinidade, turbidez e composição de nutrientes. Entre os impactos negativos está:",
+        options: [
+            "a) aumento da biodiversidade aquática.",
+            "b) redução de espécies adaptadas ao fluxo natural.",
+            "c) melhora da qualidade da água.",
+            "d) crescimento de recifes próximos.",
+            "e) estabilização de sedimentos."
+        ],
+        correct: 1
+    },
+    {
+        q: "10. (UERJ 2021) A presença de peixes em rios e lagos pode diminuir em função do aporte de matéria orgânica proveniente de esgotos não tratados, o que contamina o ecossistema aquático. Nessa situação, o desaparecimento de peixes em rios contaminados deve-se ao aumento da população de bactérias que realizam o seguinte processo:",
+        options: [
+            "a) respiração aeróbia.",
+            "b) nutrição fotoautotrófica.",
+            "c) remoção de CO₂.",
+            "d) fixação de nitrogênio.",
+            "e) fermentação alcoólica."
+        ],
+        correct: 0
+    }
+];
+
+let current = 0;
+let score = 0;
+let selectedOption = null;
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const resultEl = document.getElementById("result");
+const progressFill = document.querySelector(".progress-fill");
+
+
+function loadQuestion() {
+    nextBtn.disabled = true;
+    optionsEl.innerHTML = "";
+    resultEl.innerHTML = "";
+
+    progressFill.style.width = ((current) / questions.length) * 100 + "%";
+
+    const q = questions[current];
+    questionEl.innerText = q.q;
+
+    q.options.forEach((opt, index) => {
+        const div = document.createElement("div");
+        div.className = "option";
+        div.innerText = opt;
+        div.onclick = () => selectOption(div, index);
+        optionsEl.appendChild(div);
+    });
+}
+
+function selectOption(element, index) {
+    selectedOption = index;
+
+    document.querySelectorAll(".option").forEach(o => {
+        o.style.borderColor = "transparent";
+    });
+
+    element.style.borderColor = "#5a8cff";
+
+    nextBtn.disabled = false;
+}
+
+function nextQuestion() {
+    const q = questions[current];
+    const allOptions = document.querySelectorAll(".option");
+
+    allOptions[q.correct].classList.add("correct");
+
+    if (selectedOption !== q.correct) {
+        allOptions[selectedOption].classList.add("wrong");
+    } else {
+        score++;
+    }
+
+    nextBtn.disabled = true;
+    nextBtn.innerText = "Continuar";
+
+    setTimeout(() => {
+        current++;
+
+        if (current >= questions.length) {
+            finishQuiz();
+            return;
+        }
+
+        selectedOption = null;
+        nextBtn.innerText = "Confirmar";
+        loadQuestion();
+    }, 1100);
+}
+
+function finishQuiz() {
+    questionEl.innerHTML = "";
+    optionsEl.innerHTML = "";
+    nextBtn.style.display = "none";
+
+    progressFill.style.width = "100%";
+
+    resultEl.innerHTML = `Você acertou <b>${score}</b> de <b>${questions.length}</b>!`;
+
+    confetti({
+        particleCount: 200,
+        spread: 90,
+        origin: { y: 0.6 },
+        colors: ["#4a7dff", "#74a0ff", "#0077ff"]
+    });
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
