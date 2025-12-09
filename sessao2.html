@@ -1,48 +1,230 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title></title>
-  </head>
-  <img src="" alt="Descrição da Imagem" align="right">
- <h1>02.POLUIÇÃO</h1>
- <p>Um estudo internacional publicado no site PLOS One </p>
- <p>concluiu que existem 170 trilhões de fragmentos de lixo</P
- <p>Plástico acumulados nos oceanos do mundo.</p>
- <p>Na prática, para cada habitante do planeta são cerca de</p>
- <p>20 mil resíduos plásticos flutuando nos mares, a maioria </p>
- <p>de microplásticos, partículas com menos de 5</p>
- <p>milímetros.</p>
- <p>Os números são resultado de amostras recolhidas em</P>
- <P>mais de 11 mil pontos de monitoramento durante 40</p>
- <p>anos, entre 1979 e 2019, nos oceanos Atlântico, Pacífico,</p>
- <p>Índico e no Mar Mediterrâneo.</p>
- 
- 
- 
- <br>Com o tempo, os resíduos de plástico são</p>
- <p>degradados, dividindo-se em pequenos</p>
- <p>fragmentos. O processo, que é lento, também</p>
- <p>preocupa os cientistas.</p>
- <p>Uma pesquisa da Universidade de Plymouth, na</p>
- <p>Inglaterra, mostrou que resíduos de plástico</p>
- <p>foram encontrados em um terço dos peixes</p>
- <p>capturados no Reino Unido, entre eles o bacalhau.</p>
- <p>Além de resultar em desnutrição e fome para os</p>
- <p>peixes, os pesquisadores dizem que, ao consumir</p>
- <p>frutos do mar, os seres humanos podem estar se alimentando</p>
- <p>por tabela, de fragmentos de plástico. E os efeitos disso</p>
- <p>ainda são desconhecidos.</p>
- <p>Em 2016, a Autoridade Europeia de Segurança</p>
- <p>Alimentar alertou para o crescente risco à saúde</p>
- <p>humana, dada a possibilidade de micropartículas de</p>
- <p>plástico estarem presentes nos tecidos dos peixes comercializados.</p>
- 
-  <body>
-    <header>
-      
-  </body>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poluição</title>
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="shortcut icon" href="imagens/baleiaazul.png" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bdiferente">
+  <nav>
+        <a href="index.html">Home</a>
+        <a href="secoes.html">Aprenda</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="sobre.html">Sobre</a>
+  </nav>
+
+  <h1 class="subtitulo"><span style="color: #6ce5e8;">02.</span> POLUIÇÃO</h1>
+  
+  <div class="container2">
+    <article style="width: 600px; height: 460px; margin-right: 100px;">
+      <p>
+        Um estudo internacional publicado no site PLOS One concluiu que existem 170 trilhões de fragmentos de lixo plástico acumulados nos oceanos do mundo.
+        Na prática, para cada habitante do planeta, são cerca de 20 mil resíduos plásticos flutuando nos mares, a maioria de microplásticos, partículas com menos de 5 milímetros.
+        Os números são resultado de amostras recolhidas em mais de 11 mil pontos de monitoramento durante 40 anos, entre 1979 e 2019, nos oceanos Atlântico, Pacífico, Índico e no Mar Mediterrâneo.
+      </p>
+    </article>
+
+    <div id="grafico-barras" style="width: 650px; height: 700px;">
+    <canvas id="barChart"></canvas>
+</div>
+  </div>
+
+  <div class="container2" style="margin-top: 80px;">
+    <div id="grafico-tempo" style="width: 700px; height: 520px;">
+    <canvas id="tempoChart"></canvas>
+</div>
+
+    <article style="width: 600px; margin-left: 100px;">
+      <p>
+        Com o tempo, os resíduos de plástico são degradados, dividindo-se em pequenos fragmentos. O processo, que é lento, também preocupa os cientistas.
+      Uma pesquisa da Universidade de Plymouth, na Inglaterra, mostrou que resíduos de plástico foram encontrados em um terço dos peixes capturados no Reino Unido, entre eles o bacalhau.
+      Além de resultar em desnutrição e fome para os peixes, os pesquisadores dizem que, ao consumir frutos do mar, os seres humanos podem estar se alimentando, por tabela, de fragmentos de plástico. E os efeitos disso ainda são desconhecidos.
+      Em 2016, a Autoridade Europeia de Segurança Alimentar alertou para o crescente risco à saúde humana, dada a possibilidade de micropartículas de plástico estarem presentes nos tecidos dos peixes comercializados.
+      </p>
+    </article>
+
+    
+  </div>
+
+  <script>
+(function() {
+    const canvas = document.getElementById("barChart");
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["1990", "1995", "2000", "2005", "2010", "2015", "2019"],
+            datasets: [{
+                label: "Plástico detectado (toneladas)",
+                data: [50, 30, 40, 20, 90, 140, 230],
+                backgroundColor: [
+                    "#8FEAF5",
+                    "#64C7D6",
+                    "#7CB9D2",
+                    "#4C8BB7",
+                    "#8C4CA9",
+                    "#C44C93",
+                    "#F24D86"
+                ],
+                borderWidth: 0,
+                borderRadius: 6,
+                hoverOffset: 5,
+            }]
+        },
+
+        options: {
+            maintainAspectRatio: false,
+
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: "#ffffff",      // números brancos
+                        font: { size: 14 }
+                    },
+                    grid: {
+                        color: "rgba(255, 255, 255, 0.3)" // linhas claras
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: "#ffffff",
+                        font: { size: 14 }
+                    },
+                    grid: { display: false }
+                }
+            },
+
+            plugins: {
+                legend: { display: false }, // remove legenda
+                tooltip: {
+                    backgroundColor: "rgba(0,0,0,0.7)",
+                    titleFont: { size: 14 },
+                    bodyFont: { size: 13 },
+                    callbacks: {
+                        label: ctx => `${ctx.raw} toneladas`
+                    }
+                },
+                title: {
+                    display: true,
+                    text: [
+                        "PLÁSTICO DETECTADOS NOS OCEANOS",
+                        "*em toneladas"
+                    ],
+                    color: "#ffffff",
+                    font: {
+                        size: 20,
+                        weight: "bold"
+                    },
+                    padding: { top: 10, bottom: 10 }
+                }
+            }
+        }
+    });
+})();
+</script>
+<script>
+(function() {
+    const canvas = document.getElementById("tempoChart");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: [
+                "Copo de Isopor",
+                "Lata de Alumínio",
+                "Fralda",
+                "Garrafa Plástica",
+                "Linha de Pesca"
+            ],
+            datasets: [{
+                data: [50, 200, 450, 450, 600],
+
+                backgroundColor: [
+                    "#F5F5F5",  // Copo de Isopor
+                    "#47576B",  // Lata de Alumínio
+                    "#C1CF70",  // Fralda
+                    "#6EC9E5",  // Garrafa Plástica
+                    "#0E1B24"   // Linha de Pesca
+                ],
+
+                borderRadius: 8,
+            }]
+        },
+
+        options: {
+            maintainAspectRatio: false,
+
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: "#ffffff",
+                        font: { size: 13 }
+                    },
+                    grid: {
+                        color: "rgba(255,255,255,0.25)"
+                    }
+                },
+
+                x: {
+                    ticks: {
+                        color: "#ffffff",
+                        font: { size: 14 }
+                    },
+                    grid: { display: false }
+                }
+            },
+
+            plugins: {
+                title: {
+                    display: true,
+                    text: [
+                        "QUANTO TEMPO VAI LEVAR PARA O PLÁSTICO",
+                        "DESAPARECER?",
+                        "- estimativa em anos"
+                    ],
+                    color: "#ffffff",
+                    font: {
+                        size: 20,
+                        weight: "bold"
+                    },
+                    padding: { bottom: 20 }
+                },
+
+                legend: {
+                    display: true,
+                    labels: {
+                        color: "#ffffff",
+                        font: { size: 13 }
+                    }
+                },
+
+                tooltip: {
+                    backgroundColor: "rgba(0,0,0,0.7)",
+                    callbacks: {
+                        label: (ctx) => `${ctx.raw} anos`
+                    }
+                },
+
+                // valores em cima de cada barra
+                datalabels: false
+            },
+
+            animation: {
+                duration: 900
+            }
+        }
+    });
+})();
+</script>
+</body>
 </html>
-
-
-

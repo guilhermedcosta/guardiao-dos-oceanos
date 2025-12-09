@@ -158,7 +158,6 @@ p{
 article{
     background-color: #023e64;
     padding: 15px;
-    flex: 1;
     border-radius: 20px;
 }
 
@@ -169,9 +168,28 @@ article{
     align-items: center;
 }
 
-#bdiferente{
+.bdiferente{
     background-image: url('imagens/Clima.png'); 
     background-repeat: no-repeat;
     background-size: cover; /* cobre toda a tela */
     min-height: 92vh;
+}
+
+.container1{
+    display: flex;
+    justify-content: center;
+}
+
+.container2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#arraia{
+    height: 800px;
+}
+
+.secoesp{
+    margin-left: 20px;
 }
