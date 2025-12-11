@@ -103,7 +103,7 @@ p{
 .sobre{
     font-family: var(--fonte-auxiliar);
     color: white;
-    font-size: 1.3em;
+    font-size: 1.5em;
     padding: 20px 0px;
     text-align: justify;
     width: 90vw;
@@ -192,4 +192,120 @@ article{
 
 .secoesp{
     margin-left: 20px;
+}
+
+.bdiferente2{
+    background-image: url('imagens/Biodiversidade\ Marinha.png'); 
+    background-repeat: no-repeat;
+    background-size: cover; /* cobre toda a tela */
+    min-height: 92vh;
+}
+
+.p{
+    font-family: var(--fonte-auxiliar);
+    color: white;
+    text-align: left;
+    font-size: 25px;
+}
+
+#animais{
+    margin-top: 110px;
+    width: 99vw;
+}
+
+.bdiferente3{
+    background-image: url('imagens/Sustentabilidade.png'); 
+    background-repeat: no-repeat;
+    background-size: cover; /* cobre toda a tela */
+    min-height: 92vh;
+}
+
+.subtitulo2{
+    margin: 30px;
+    font-family: var(--fontep);
+    color: #0f3896;
+    font-size: 60px;
+    text-align: left;
+}
+
+.card {
+  display: flex;
+  align-items: center; /* alinha topo da imagem com topo do texto */
+  gap: 30px;               
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.card_img {
+  width: 580px;            /* largura fixa da imagem (ajuste aqui) */
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;          /* não deixa a imagem encolher demais */
+}
+
+.card_content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;               /* espaço entre os parágrafos */
+  flex: 1;                 /* ocupa o resto do espaço disponível */
+}
+
+.p{
+    font-family: var(--fonte-auxiliar);
+    color: black;
+    font-size: 1.5em;
+    padding: 20px 0px;
+    text-align: justify;
+
+}
+
+.info-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px;
+}
+
+/* Cada card */
+.info-card {
+    background-color: #003f66;  /* azul escuro igual ao da imagem */
+    color: white;
+    padding: 30px;
+    width: 920px;               /* ajuste se quiser mais largo ou mais estreito */
+    border-radius: 20px;
+    font-family: var(--fonte-auxiliar);              /* você irá colocar a sua fonte aqui */
+    box-sizing: border-box;
+    
+}
+
+/* Título */
+.info-card h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-family: var(--fonte-auxiliar);              /* fonte da sua escolha depois */
+}
+
+/* Parágrafos */
+.info-card p {
+    font-size: 27px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-family: var(--fonte-auxiliar);              /* fonte da sua escolha depois */
+}
+
+/* Lista */
+.info-card ul {
+    margin-left: 20px;
+    font-size: 27px;
+    line-height: 1.6;
+}
+
+.info-card:nth-child(1) {
+    width: 550px;
+}
+
+.info-card:nth-child(2) {
+    width: 900px;
 }
